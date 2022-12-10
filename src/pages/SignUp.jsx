@@ -9,6 +9,7 @@ import { ReactComponent as ArrowRightIcon } from '../assets/svg/keyboardArrowRig
 import VisibilityIcon from '../assets/svg/visibilityIcon.svg';
 import { toast } from 'react-toastify';
 import OAuth from '../components/OAuth';
+import Spinner from '../components/Spinner';
 
 const SignUp = () => {
 	const [showPassword, setShowPassword] = useState(false);
@@ -43,6 +44,7 @@ const SignUp = () => {
 			);
 
 			const user = userCredential.user;
+
 			updateProfile(auth.currentUser, {
 				displayName: name,
 			});
