@@ -50,6 +50,7 @@ const SignIn = () => {
 		} catch (error) {
 			const errorCode = error.code;
 			const errorMessage = error.message;
+			setLoading(false);
 			toast.error('Bad Credentials!!');
 			// console.log(error);
 			// console.log(errorCode, errorMessage);
