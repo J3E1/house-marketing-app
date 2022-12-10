@@ -12,6 +12,8 @@ import OAuth from '../components/OAuth';
 
 const SignUp = () => {
 	const [showPassword, setShowPassword] = useState(false);
+	const [loading, setLoading] = useState(false);
+
 	const [formData, setFormData] = useState({
 		name: '',
 		email: '',
@@ -29,6 +31,7 @@ const SignUp = () => {
 	};
 
 	const onSubmitHandler = async e => {
+		setLoading(true);
 		e.preventDefault();
 
 		// const auth = getAuth();
@@ -40,7 +43,6 @@ const SignUp = () => {
 			);
 
 			const user = userCredential.user;
-
 			updateProfile(auth.currentUser, {
 				displayName: name,
 			});
@@ -51,6 +53,7 @@ const SignUp = () => {
 
 			await setDoc(doc(db, 'users', user.uid), formDataCopy);
 
+			setLoading(false);
 			toast.success('Signed Up Successfully!!');
 			navigate('/');
 		} catch (error) {
@@ -60,6 +63,8 @@ const SignUp = () => {
 			// console.log(errorCode, errorMessage);
 		}
 	};
+
+	if (loading) return <Spinner />;
 
 	return (
 		<>
