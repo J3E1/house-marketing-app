@@ -39,6 +39,9 @@ function App() {
 				<Route path='/create-listing' element={<CreateListings />} />
 				<Route path='/edit-listing/:listingId' element={<EditListing />} />
 				<Route path='/forgot-password' element={<ForgotPassword />} />
+				<Route path='/contact/:landlordId' element={<PrivateRoute />}>
+					<Route path='/contact/:landlordId' element={<Contact />} />
+				</Route>
 				<Route path='/contact/:landlordId' element={<Contact />} />
 			</Routes>
 			<NavBar />
